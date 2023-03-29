@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="../style/output.css" rel="stylesheet" />
+  </head>
+  <body class="flex items-center justify-center">
+    <!-- Cat/Dog Face  -->
+    <section
+      data-aos="zoom-out-up"
+      class="borde row-start-2 row-end-3 mt-[2rem] items-center justify-self-center border-white md:mt-[2rem]"
+    >
+      <!-- absolute top-[60%] left-[50%] translate-x-[-50%] translate-y-[-50%] -->
+      <div
+        class="relative flex h-[20.5rem] w-[95vw] flex-col justify-evenly rounded-xl bg-orange-300 md:h-[22rem] md:w-[40rem]"
+      >
+        <div class="flex justify-around">
+          <button
+            onclick="resetData()"
+            id="resetBtn"
+            class="rounded-full bg-red-500 p-2 px-5 font-bold text-orange-100 shadow-sm shadow-rose-400 transition-all duration-100 hover:scale-110 hover:shadow-md hover:shadow-rose-400 active:scale-105"
+          >
+            Reset
+          </button>
+          <button
+            onclick="submitData()"
+            id="submitBtn"
+            class="rounded-full bg-green-500 p-2 px-5 font-bold text-orange-100 shadow-sm shadow-green-300 transition-all duration-100 hover:scale-110 hover:shadow-md hover:shadow-green-300 active:scale-105"
+          >
+            Submit
+          </button>
+          <button
+            onclick="changeData()"
+            id="changeBtn"
+            class="hidden rounded-full bg-green-500 p-2 px-5 font-bold text-orange-100 shadow-sm shadow-green-300 transition-all duration-100 hover:scale-110 hover:shadow-md hover:shadow-green-300 active:scale-105"
+          >
+            Change
+          </button>
+        </div>
+        <div class="text-center">
+          <input
+            id="title"
+            class="text-tea-300 w-1/2 rounded-full border-2 border-gray-700 bg-gray-200 p-1 text-center font-bold text-rose-600 outline-none focus:border-2 focus:border-rose-700 focus:shadow-md focus:shadow-rose-600 md:w-[15rem]"
+            type="text"
+            placeholder="Title..."
+          />
+        </div>
+        <div class="bordr-4 mt-2 border-black text-center">
+          <textarea
+            id="msg"
+            class="mouth text-tea-300 h-[10rem] w-[70vw] animate-bounce rounded-xl border-2 border-gray-700 bg-rose-100 p-4 font-semibold outline-none focus:animate-none focus:border-2 focus:border-blue-700 focus:shadow-md focus:shadow-blue-600 md:w-[22rem]"
+            name=""
+            id=""
+            placeholder="Message..."
+          ></textarea>
+        </div>
+        <div
+          class="ear absolute -top-[8rem] left-2 block h-[8rem] w-[8rem] bg-sky-500"
+        ></div>
+        <div
+          class="ear absolute -top-[8rem] right-2 block h-[8rem] w-[8rem] bg-sky-500"
+        ></div>
+      </div>
+      <!-- <div class="">
+        <div class="w-25 overflow-hidden inline-block">
+          <div
+            class="h-13 w-13 bg-white -rotate-45 transform origin-top-left"
+          ></div>
+        </div>
+      </div> -->
+    </section>
+  </body>
+</html>

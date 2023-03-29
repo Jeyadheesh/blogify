@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLOG - Home Page</title>
+    <link href="../style/output.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/3dd5091be5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body
+    class="flex min-h-screen flex-col overflow-x-hidden bg-gradient-to-br from-gray-700 to-gray-900"
+  >
+    <!-- Loading Page 3 -->
+    <section
+      class="loaderA hidde fixed top-0 z-10 flex h-screen w-screen flex-col items-center justify-center gap-5 bg-gray-900"
+    >
+      <div class="loader"></div>
+      <h1 class="animate-bounce text-center text-2xl font-bold text-white">
+        Loading...
+      </h1>
+    </section>
+
+    <!-- Navbar -->
+    <section class="md:mb-0">
+      <nav
+        class="flex w-full justify-between bg-gradient-to-r from-sky-400 to-sky-500 p-1 px-10 shadow-md shadow-gray-400 md:justify-around md:p-1"
+      >
+        <a
+          href="home.html"
+          class="my-auto scale-95 text-xl font-bold text-gray-700 transition-all duration-200 hover:scale-100 active:scale-95"
+          title="home"
+          ><img
+            src="../img/logo4.png"
+            class="borde-2 h-[3.5rem] border-black md:h-[4.5rem] lg:h-[5rem]"
+            alt=""
+        /></a>
+
+        <button id="menuBtn" class="my-auto block md:hidden">
+          <i class="fa-solid fa-bars my-auto text-3xl"></i>
+        </button>
+
+        <!-- Menu -->
+        <ul
+          class="m-0 my-auto hidden -skew-x-6 rounded-full border-2 border-white p-0 shadow-md shadow-black md:flex"
+        >
+          <li class="">
+            <a
+              class="block rounded-l-full border-r-2 border-white bg-sky-200 p-2 font-semibold text-gray-700 transition-all duration-200 hover:bg-sky-300 hover:text-gray-700"
+              href="home.html"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              class="block border-r-2 border-white bg-gray-700 p-2 font-semibold text-white transition-all duration-200 hover:bg-sky-300 hover:text-gray-700"
+              href="userBlogs.html"
+              >Your Blogs</a
+            >
+          </li>
+          <li>
+            <a
+              class="block border-r-2 border-white bg-gray-700 p-2 font-semibold text-white transition-all duration-200 hover:bg-sky-300 hover:text-gray-700"
+              href="create.html"
+              >Create New</a
+            >
+          </li>
+          <li>
+            <a
+              onclick="logout()"
+              class="borde-2 block cursor-pointer rounded-r-full border-gray-200 bg-gray-700 p-2 font-semibold text-white transition-all duration-200 hover:bg-rose-500 hover:text-gray-100"
+              >Logout</a
+            >
+          </li>
+        </ul>
+
+        <div
+          class="relative hidden gap-2 text-center text-base font-bold text-gray-700 md:block md:text-lg"
+        >
+          <button
+            id="profileImg"
+            class="profileImg w-16 scale-95 overflow-hidden rounded-full border-4 border-white transition-all duration-200 hover:scale-100 hover:border-sky-300 hover:shadow-md hover:shadow-gray-200 active:scale-95 md:w-20 lg:w-20"
+          >
+            <img
+              class="currImg peer rounded-full transition-all duration-300"
+              src="../img/profile1.jpg"
+              alt=""
+            />
+            <div
+              class="overflo-hidden absolute bottom-0 m-0 h-1/2 w-full translate-y-full rounded-b-full border-4 border-transparent bg-[rgba(0,0,0,0.5)] p-0 text-[0.7rem] font-normal leading-[0.8rem] text-white transition-all duration-300 hover:translate-y-0 peer-hover:translate-y-0"
+            >
+              Change Image
+            </div>
+          </button>
+
+          <div class="my-0">
+            <div class="currNameBox hidde group relative flex gap-3 px-2">
+              <div
+                onclick="editName()"
+                class="currName borde-2 relative my-auto flex h-7 w-[9rem] cursor-pointer items-center justify-center text-ellipsis whitespace-nowrap border-white text-base"
+              >
+                Name
+              </div>
+              <div
+                class="cgnameinfo absolute -left-2 bottom-[-2.5rem] z-[10] w-[10rem] scale-0 rounded-xl bg-white p-1 py-1.5 transition-all duration-150 group-hover:scale-100"
+              >
+                <p class="rounded-md bg-white text-sm font-semibold">
+                  Click to Edit Name
+                </p>
+              </div>
+            </div>
+
+            <div class="editNameBox flex hidden gap-3">
+              <input
+                maxlength="16"
+                type="text"
+                class="nameIn h-7 w-[9rem] rounded-lg bg-gray-200 px-2 text-center text-sm font-semibold text-rose-600 outline-none placeholder:text-sm focus:border-2 focus:border-rose-700 focus:shadow-md focus:shadow-rose-600"
+                placeholder="Enter New Name"
+              />
+              <button title="Save">
+                <i
+                  onclick="saveName()"
+                  class="fa-solid fa-floppy-disk cursor-pointer rounded-md bg-green-600 p-[.3rem] text-white transition-all duration-200 hover:scale-105 active:scale-100"
+                ></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Change Profile -->
+          <section
+            id="profiles"
+            class="profiles absolute top-[0.5rem] z-[1] block h-auto w-auto scale-y-0 rounded-md bg-gray-200 p-3 transition-all duration-200 md:left-[-36.5rem] lg:left-[-43.5rem]"
+          >
+            <ul class="flex md:gap-3 lg:gap-5">
+              <li
+                class="rounded-md md:h-[6rem] md:w-[6rem] lg:h-[7rem] lg:w-[7rem]"
+              >
+                <img
+                  onclick="setImage(1)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile1.jpg"
+                  alt=""
+                />
+              </li>
+              <li
+                class="rounded-md md:h-[6rem] md:w-[6rem] lg:h-[7rem] lg:w-[7rem]"
+              >
+                <img
+                  onclick="setImage(2)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile2.jpg"
+                  alt=""
+                />
+              </li>
+              <li
+                class="rounded-md md:h-[6rem] md:w-[6rem] lg:h-[7rem] lg:w-[7rem]"
+              >
+                <img
+                  onclick="setImage(3)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile3.jpg"
+                  alt=""
+                />
+              </li>
+              <li
+                class="rounded-md md:h-[6rem] md:w-[6rem] lg:h-[7rem] lg:w-[7rem]"
+              >
+                <img
+                  onclick="setImage(4)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile4.jpg"
+                  alt=""
+                />
+              </li>
+              <li
+                class="rounded-md md:h-[6rem] md:w-[6rem] lg:h-[7rem] lg:w-[7rem]"
+              >
+                <img
+                  onclick="setImage(5)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile5.jpg"
+                  alt=""
+                />
+              </li>
+            </ul>
+          </section>
+        </div>
+      </nav>
+    </section>
+
+    <!-- Side Bar -->
+
+    <section
+      id="sidebar"
+      class="fixed top-0 z-[1] flex h-screen w-screen translate-x-[100vw] justify-end transition-all duration-300 md:hidden"
+    >
+      <div
+        id="sidebarBox"
+        class="translat-x-[15rem] ml-aut relative h-full w-[15rem] bg-orange-200 p-4 transition-all duration-300"
+      >
+        <button id="sidebarCls" class="absolute top-4 right-5 z-[1]">
+          <i class="fa-solid fa-circle-xmark text-2xl text-sky-600"></i>
+        </button>
+
+        <div
+          class="relative flex flex-col items-center text-xl font-bold text-gray-700"
+        >
+          <button
+            id="profileImgSibr"
+            class="profileImgSibr mt-7 h-[6.5rem] w-[6.5rem] scale-95 overflow-hidden rounded-full border-4 border-white transition-all duration-200 hover:scale-100 hover:border-sky-300 hover:shadow-md hover:shadow-gray-200 active:scale-95"
+          >
+            <img
+              class="currImg peer rounded-full transition-all duration-300"
+              src="../img/profile1.jpg"
+              alt=""
+            />
+            <div
+              class="overflo-hidden absolute bottom-0 m-0 mt-1 h-1/2 w-full translate-y-full rounded-b-full border-4 border-transparent bg-[rgba(0,0,0,0.5)] p-0 text-sm font-normal leading-4 text-white transition-all duration-300 hover:translate-y-0 peer-hover:translate-y-0"
+            >
+              Change Image
+            </div>
+          </button>
+
+          <div class="my-2">
+            <div class="scurrNameBox hidde flex gap-3 px-2">
+              <h1
+                class="scurrName borde-2 my-auto flex h-7 w-[9rem] items-center justify-center text-ellipsis whitespace-nowrap border-white text-lg"
+              >
+                Name
+              </h1>
+              <button title="Edit">
+                <i
+                  onclick="seditName()"
+                  class="fa-solid fa-pen-to-square cursor-pointer rounded-md bg-green-600 p-[.3rem] text-white transition-all duration-200 hover:scale-105 active:scale-100"
+                ></i>
+              </button>
+            </div>
+
+            <div class="seditNameBox flex hidden gap-3">
+              <input
+                maxlength="16"
+                type="text"
+                class="snameIn h-7 w-[9rem] rounded-lg bg-gray-200 px-2 text-center text-sm font-semibold text-rose-600 outline-none placeholder:text-sm focus:border-2 focus:border-rose-700 focus:shadow-md focus:shadow-rose-600"
+                placeholder="Enter New Name"
+              />
+              <button title="Save">
+                <i
+                  onclick="ssaveName()"
+                  class="fa-solid fa-floppy-disk cursor-pointer rounded-md bg-green-600 p-[.3rem] text-white transition-all duration-200 hover:scale-105 active:scale-100"
+                ></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Change Profile -->
+          <section
+            id="profilesSibr"
+            class="profiles absolute bottom-[-17.5rem] left-0 z-[1] block h-auto w-auto scale-y-0 rounded-md bg-gray-200 p-3 transition-all duration-200"
+          >
+            <ul class="flex flex-wrap justify-center gap-3">
+              <li class="h-[5rem] w-[5rem] rounded-md">
+                <img
+                  onclick="setImage(1)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile1.jpg"
+                  alt=""
+                />
+              </li>
+              <li class="h-[5rem] w-[5rem] rounded-md">
+                <img
+                  onclick="setImage(2)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile2.jpg"
+                  alt=""
+                />
+              </li>
+              <li class="h-[5rem] w-[5rem] rounded-md">
+                <img
+                  onclick="setImage(3)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile3.jpg"
+                  alt=""
+                />
+              </li>
+              <li class="h-[5rem] w-[5rem] rounded-md">
+                <img
+                  onclick="setImage(4)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile4.jpg"
+                  alt=""
+                />
+              </li>
+              <li class="h-[5rem] w-[5rem] rounded-md">
+                <img
+                  onclick="setImage(5)"
+                  class="prfImgs cursor-pointer rounded-full border-4 border-white transition-all duration-300 hover:scale-105 hover:border-orange-500 active:scale-100"
+                  src="../img/profile5.jpg"
+                  alt=""
+                />
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <ul class="mt-5 flex flex-col gap-3">
+          <li>
+            <a
+              class="block w-full rounded-md border-2 border-white bg-sky-300 p-1 text-lg font-semibold text-gray-700"
+              href="home.html"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              class="block w-full rounded-md border-2 border-white bg-gray-600 p-1 text-lg font-semibold text-white"
+              href="userBlogs.html"
+              >Your Blogs</a
+            >
+          </li>
+          <li>
+            <a
+              class="block w-full rounded-md border-2 border-white bg-gray-600 p-1 text-lg font-semibold text-white"
+              href="create.html"
+              >Create Blog</a
+            >
+          </li>
+          <li>
+            <a
+              onclick="logout()"
+              class="block w-full cursor-pointer rounded-md border-2 border-white bg-gray-600 p-1 text-lg font-semibold text-white"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Heading -->
+    <section class="block px-1 py-2 md:hidden md:px-3">
+      <div
+        class="border-y-2 border-y-white bg-cyan-300 p-1 text-center text-2xl font-bold text-violet-700 shadow-sm shadow-gray-200"
+      >
+        <h1 class="">Home</h1>
+      </div>
+    </section>
+
+    <!-- Others Blogs -->
+    <section class="bg-gradien-to-r mt-0 from-gray-700 to-gray-900 p-2 md:mt-4">
+      <div
+        class="md:hidde mb-3 w-[90vw] text-right font-bold text-white md:mb-5"
+      >
+        <a href="userBlogs.html" class="">
+          <button
+            class="transtion-all scale-100 rounded-md bg-purple-400 p-2 px-3 duration-200 hover:scale-105 hover:shadow-md hover:shadow-purple-400 active:scale-100"
+          >
+            Your Blogs
+          </button>
+        </a>
+      </div>
+
+      <!-- Message Container -->
+      <div class="mt-4">
+        <ul
+          id="blogContainerHome"
+          class="grid grid-cols-1 items-center justify-items-center gap-[3.7rem] md:grid-cols-2 md:gap-y-[4rem]"
+        >
+          <!-- Single Blog -->
+          <!-- <li>
+            <div
+              class="relative flex w-[90vw] flex-col gap-2 rounded-md bg-white p-2 md:w-[40vw] lg:w-[40vw]"
+            >
+              <div
+                class="flex gap-1 rounded-sm bg-gradient-to-r from-orange-300 to-orange-400 px-3 text-center text-[1.3rem] font-bold text-red-600"
+              >
+                <div class="my-aut pointer-events-none cursor-none py-1">
+                  <img
+                    class="h-14 w-14 rounded-full border-2 border-white"
+                    src="../img/profile2.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="tit m-auto w-5/6 cursor-pointer text-center">
+                  Title Lorhaenna wpudTitle Lorhaenna wpudTitle Lorhaenna wpud
+                </div>
+              </div>
+              <div
+                class="msg cursor-pointer text-justify text-sm md:text-sm lg:text-base"
+              >
+                eniti officia, incidu enim., dolor sit amet consectetur adipi
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Blanditiis ex exercitationem odio tempora commodi provident
+                officiis non quo modi animi.eniti officia, incidu enim., dolor
+                sit amet consectetur adipi Lorem ipsum dolor, sit amet
+                consectetur adipisicing elit. Blanditiis ex exercitationem odio
+                tempora commodi provident officiis non quo modi animi.eniti
+                officia, incidu enim., dolor sit amet consectetur adipi Lorem
+                ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis
+                ex exercitationem odio tempora commodi provident officiis non
+                quo modi animi.
+              </div>
+
+              <div
+                class="flex justify-between font-semibold md:text-sm lg:text-[1.1rem]"
+              >
+                <div class="flex gap-2">
+                  <button>
+                    <i
+                      class="fa-solid fa-heart transtion-all my-auto scale-100 text-2xl text-gray-400 duration-200 hover:scale-105 active:scale-100"
+                    ></i>
+                  </button>
+                  <p class="my-auto text-lg">1</p>
+                </div>
+                <div class="italic">- Jei</div>
+              </div>
+              <div
+                class="triangle absolute bottom-[-3.4rem] right-[4rem] h-[3.5rem] w-[3.5rem] bg-white md:bottom-[-3.9rem] md:right-[4rem] md:h-[4rem] md:w-[4rem]"
+              ></div>
+            </div>
+          </li> -->
+
+          <!--  -->
+        </ul>
+      </div>
+      <!-- Empty Blog Info -->
+      <section
+        style="background-image: url(../img/emtImg.png)"
+        class="borde-2 empImg my-auto flex hidden h-[24rem] items-center justify-center border-white bg-contain bg-center bg-no-repeat"
+      ></section>
+    </section>
+
+    <!-- Loading Page -->
+    <section
+      class="absolute top-0 flex hidden h-screen w-screen flex-col items-center justify-center bg-gray-900"
+    >
+      <div class="relative h-48 w-48">
+        <div
+          class="flex h-full w-full items-center justify-center text-[1.15rem] font-semibold text-gray-200"
+        >
+          Loading ...
+        </div>
+        <div
+          class="border1 animate-spin1 absolute top-0 h-full w-full border-4 border-white"
+        ></div>
+        <div
+          class="border2 animate-spin2 absolute top-0 h-full w-full border-4 border-white"
+        ></div>
+        <div
+          class="border3 animate-spin3 absolute top-0 h-full w-full border-4 border-white"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Loading Page 2 -->
+    <div
+      class="loader2 fixed top-0 flex hidden h-screen w-screen scale-100 items-center justify-center bg-gray-900"
+    >
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="mt-auto w-full border-y-2 border-white bg-gradient-to-r from-teal-400 to-teal-500 p-1 text-center text-2xl font-semibold"
+    >
+      <h3 style="text-shadow: 1px 1px 3px gold" class="text-white">
+        Created By Jeyadheesh
+      </h3>
+    </footer>
+
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="../node_modules/aos/dist/aos.js"></script>
+    <script src="common3.js"></script>
+    <script src="home.js"></script>
+    <script src="app.js"></script>
+    <script src="wordLimit.js"></script>
+  </body>
+</html>

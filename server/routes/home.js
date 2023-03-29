@@ -1,0 +1,23 @@
+const express = require("express");
+const router = express.Router();
+const homecontrol = require("../controllers/homecontrol");
+
+router.post("/sinUserdata", homecontrol.sinUserdata);
+router.get("/allUserdata", homecontrol.allUserdata);
+router.get("/logout", homecontrol.logout);
+router.get("/getcookieData", homecontrol.getcookieData);
+router.post("/getDataById", homecontrol.getDataById);
+router.post("/changeImg", homecontrol.changeImg);
+router.post("/changeName", homecontrol.changeName);
+router.post("/setnamefromdb", homecontrol.setnamefromdb);
+router.post("/createBlog", homecontrol.createBlog);
+router.get("/getdataByblogid/:id", homecontrol.getdataByblogid);
+router.put("/changeData/:id", homecontrol.changeData);
+router.delete("/deleteBlog/:id", homecontrol.deleteBlog);
+router.get("/coo", homecontrol.coo);
+router.get("/getlikesData", homecontrol.getlikesData);
+router.post("/addLike", homecontrol.addLike);
+router.post("/removeLike", homecontrol.removeLike);
+router.post("/updateUrLikes", homecontrol.updateUrLikes);
+router.post("/checkEdit", homecontrol.checkEdit);
+module.exports = router;
