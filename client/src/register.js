@@ -50,11 +50,14 @@ async function registerData() {
     rinfo.class = "err";
     console.log(rinfo);
   } else {
-    const rawdata = await axios.post("http://127.0.0.1:9000/auth/register", {
-      fullname: vfname,
-      email: vemail,
-      password: vpassword,
-    });
+    const rawdata = await axios.post(
+      "https://blogify-03ew.onrender.com/auth/register",
+      {
+        fullname: vfname,
+        email: vemail,
+        password: vpassword,
+      }
+    );
     const resdata = rawdata.data;
     rinfo.msg = resdata.msg;
     rinfo.class = resdata.class;
@@ -89,7 +92,7 @@ async function loginData() {
       linfo.class = "err";
     } else {
       const rawdata = await axios.post(
-        "http://127.0.0.1:9000/auth/login",
+        "https://blogify-03ew.onrender.com/auth/login",
         {
           email: vlemail,
           password: vlpassword,

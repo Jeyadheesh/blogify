@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", checkCookie2());
 
 async function checkCookie2() {
   const cookiedata = await axios.get(
-    "http://127.0.0.1:9000/home/getcookieData",
+    "https://blogify-03ew.onrender.com/home/getcookieData",
     {
       withCredentials: true,
     }
@@ -26,9 +26,12 @@ async function checkCookie2() {
 
 async function disdata() {
   blogContainerub.innerHTML = "";
-  const rawdata = await axios.post("http://127.0.0.1:9000/home/sinUserdata", {
-    id: rawUserdata.id,
-  });
+  const rawdata = await axios.post(
+    "https://blogify-03ew.onrender.com/home/sinUserdata",
+    {
+      id: rawUserdata.id,
+    }
+  );
   const resdata = await rawdata.data.result;
   // console.log(resdata);
   if (resdata) {
@@ -119,7 +122,7 @@ async function deleteBlog(id, title) {
   if (yes) {
     // console.log(id);
     const rawdata = await axios.delete(
-      `http://127.0.0.1:9000/home/deleteBlog/${id}`
+      `https://blogify-03ew.onrender.com/home/deleteBlog/${id}`
     );
     const resdata = rawdata.data;
     // console.log(resdata);

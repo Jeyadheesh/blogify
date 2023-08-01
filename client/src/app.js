@@ -1,7 +1,10 @@
 async function getCookie() {
-  const rawdata = await axios.get("http://127.0.0.1:9000/auth/coo", {
-    withCredentials: true,
-  });
+  const rawdata = await axios.get(
+    "https://blogify-03ew.onrender.com/auth/coo",
+    {
+      withCredentials: true,
+    }
+  );
   cookiedata = rawdata.data.cookiedata.jai;
   // console.log(cookiedata);
   return cookiedata;

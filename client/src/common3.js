@@ -10,7 +10,7 @@
 
 var likesData;
 async function getlikesData() {
-  const rawdata = await axios.get("http://127.0.0.1:9000/home/getlikesData");
+  const rawdata = await axios.get("https://blogify-03ew.onrender.com/home/getlikesData");
   likesData = rawdata.data.result;
   // console.log(likesData);
 }
@@ -68,7 +68,7 @@ document.addEventListener("click", (e) => {
 
 async function logout() {
   try {
-    const rawdata = await axios.get("http://127.0.0.1:9000/auth/logout", {
+    const rawdata = await axios.get("https://blogify-03ew.onrender.com/auth/logout", {
       withCredentials: true,
     });
     // console.log(rawdata.data);
@@ -81,7 +81,7 @@ async function logout() {
 async function getdataFromCookie() {
   // const cookiedata = await getCookie();
   // console.log(cookiedata);
-  await axios.get("http://127.0.0.1:9000/home/getcookieData", {
+  await axios.get("https://blogify-03ew.onrender.com/home/getcookieData", {
     withCredentials: true,
   });
   // console.log(rawdata.data);
@@ -89,7 +89,7 @@ async function getdataFromCookie() {
 
 async function setImage(imgno) {
   await setImageinfe(imgno);
-  const rawdata = await axios.post("http://127.0.0.1:9000/home/changeImg", {
+  const rawdata = await axios.post("https://blogify-03ew.onrender.com/home/changeImg", {
     imgno: imgno,
     id: rawUserdata.id,
   });
@@ -112,7 +112,7 @@ const scurrName = document.querySelector(".scurrName");
 const snameIn = document.querySelector(".snameIn");
 
 async function setnamefromdb() {
-  const rawdata = await axios.post("http://127.0.0.1:9000/home/setnamefromdb", {
+  const rawdata = await axios.post("https://blogify-03ew.onrender.com/home/setnamefromdb", {
     id: rawUserdata.id,
   });
   const resdata = rawdata.data.result;
@@ -144,7 +144,7 @@ async function saveName() {
   const newname = nameIn.value;
   if (newname) {
     currName.textContent = newname;
-    const rawdata = await axios.post("http://127.0.0.1:9000/home/changeName", {
+    const rawdata = await axios.post("https://blogify-03ew.onrender.com/home/changeName", {
       name: newname,
       id: rawUserdata.id,
     });
@@ -163,7 +163,7 @@ async function ssaveName() {
   const newname = snameIn.value;
   if (newname) {
     scurrName.textContent = newname;
-    const rawdata = await axios.post("http://127.0.0.1:9000/home/changeName", {
+    const rawdata = await axios.post("https://blogify-03ew.onrender.com/home/changeName", {
       name: newname,
       id: rawUserdata.id,
     });

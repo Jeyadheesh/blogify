@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", checkCookie2());
 
 async function checkCookie2() {
   const cookiedata = await axios.get(
-    "http://127.0.0.1:9000/home/getcookieData",
+    "https://blogify-03ew.onrender.com/home/getcookieData",
     {
       withCredentials: true,
     }
@@ -27,7 +27,9 @@ async function checkCookie2() {
 
 async function setdataforHome() {
   blogContainerHome.innerHTML = "";
-  const rawdata = await axios.get("http://127.0.0.1:9000/home/allUserdata");
+  const rawdata = await axios.get(
+    "https://blogify-03ew.onrender.com/home/allUserdata"
+  );
   const resdata = await rawdata.data.result;
   // console.log(resdata);
 
@@ -120,10 +122,13 @@ async function likePressed(id, blogId, currEle, nextEle) {
     // Remove Like
     currEle.classList.remove("active");
     nextEle.innerText = noLikes - 1;
-    const rawdata = await axios.post("http://127.0.0.1:9000/home/removeLike", {
-      likerId: rawUserdata.id,
-      blogId: blogId,
-    });
+    const rawdata = await axios.post(
+      "https://blogify-03ew.onrender.com/home/removeLike",
+      {
+        likerId: rawUserdata.id,
+        blogId: blogId,
+      }
+    );
     const resdata = await rawdata.data;
     // console.log(resdata);
     currEle.classList.add("likeBlink");
@@ -132,11 +137,14 @@ async function likePressed(id, blogId, currEle, nextEle) {
     // Add Like
     currEle.classList.add("active");
     nextEle.innerText = noLikes + 1;
-    const rawdata = await axios.post("http://127.0.0.1:9000/home/addLike", {
-      userId: id,
-      likerId: rawUserdata.id,
-      blogId: blogId,
-    });
+    const rawdata = await axios.post(
+      "https://blogify-03ew.onrender.com/home/addLike",
+      {
+        userId: id,
+        likerId: rawUserdata.id,
+        blogId: blogId,
+      }
+    );
     const resdata = rawdata.data;
     currEle.classList.remove("likeBlink");
     // console.log(resdata);
@@ -145,9 +153,12 @@ async function likePressed(id, blogId, currEle, nextEle) {
 }
 
 async function updateUrLikes(blogId) {
-  const rawdata = await axios.post("http://127.0.0.1:9000/home/updateUrLikes", {
-    blogId: blogId,
-  });
+  const rawdata = await axios.post(
+    "https://blogify-03ew.onrender.com/home/updateUrLikes",
+    {
+      blogId: blogId,
+    }
+  );
   const resdata = rawdata.data;
   // console.log(resdata);
 }

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", checkCookie2());
 
 async function checkCookie2() {
   const cookiedata = await axios.get(
-    "http://127.0.0.1:9000/home/getcookieData",
+    "https://blogify-03ew.onrender.com/home/getcookieData",
     {
       withCredentials: true,
     }
@@ -46,10 +46,13 @@ function urlparam() {
 }
 
 async function checkedit(editid) {
-  const rawdata = await axios.post("http://127.0.0.1:9000/home/checkEdit", {
-    id: rawUserdata.id,
-    blogId: editid,
-  });
+  const rawdata = await axios.post(
+    "https://blogify-03ew.onrender.com/home/checkEdit",
+    {
+      id: rawUserdata.id,
+      blogId: editid,
+    }
+  );
   const resdata = rawdata.data;
   // console.log(resdata.status);
   if (resdata.status === "err") window.location = "userBlogs.html";
@@ -77,9 +80,12 @@ function resetData() {
 // let id = 1;
 
 async function getDataById(id) {
-  const rawdata = await axios.post("http://127.0.0.1:9000/home/getDataById", {
-    id: id,
-  });
+  const rawdata = await axios.post(
+    "https://blogify-03ew.onrender.com/home/getDataById",
+    {
+      id: id,
+    }
+  );
   const resdata = rawdata.data;
   return resdata.result;
 }
@@ -91,12 +97,15 @@ async function submitData() {
     return dispop("Enter Something");
   }
   const userdata = await getDataById(rawUserdata.id);
-  const rawdata = await axios.post("http://127.0.0.1:9000/home/createBlog", {
-    id: rawUserdata.id,
-    title: vtitle,
-    msg: vmsg,
-    name: userdata.name,
-  });
+  const rawdata = await axios.post(
+    "https://blogify-03ew.onrender.com/home/createBlog",
+    {
+      id: rawUserdata.id,
+      title: vtitle,
+      msg: vmsg,
+      name: userdata.name,
+    }
+  );
   // console.log(rawdata);
   resetData();
   dispop(rawdata.data.msg);
@@ -111,7 +120,7 @@ async function changeData() {
   // console.log(vtitle, vmsg);
   // const userdata = await getDataById(id);
   const rawdata = await axios.put(
-    `http://127.0.0.1:9000/home/changeData/${editid}`,
+    `https://blogify-03ew.onrender.com/home/changeData/${editid}`,
     {
       title: vtitle,
       msg: vmsg,
@@ -124,7 +133,7 @@ async function changeData() {
 
 async function getdataByblogid() {
   const rawdata = await axios.get(
-    `http://127.0.0.1:9000/home/getdataByblogid/${editid}`
+    `https://blogify-03ew.onrender.com/home/getdataByblogid/${editid}`
   );
   const resdata = rawdata.data.result;
   return resdata;
