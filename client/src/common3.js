@@ -102,7 +102,7 @@ async function setImageinfe(imgno) {
   const currImg = document.querySelectorAll(".currImg");
   // console.log(imgno);
   currImg.forEach((curr) => {
-    curr.src = `../img/profile${imgno}.jpg`;
+    curr.src = `./img/profile${imgno}.jpg`;
   });
 }
 
@@ -122,7 +122,7 @@ async function setnamefromdb() {
   const currImg = document.querySelectorAll(".currImg");
   console.log(resdata.profileno);
   currImg.forEach((curr) => {
-    curr.src = `../img/profile${resdata.profileno}.jpg`;
+    curr.src = `./img/profile${resdata.profileno}.jpg`;
   });
 }
 

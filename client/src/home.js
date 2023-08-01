@@ -58,7 +58,7 @@ function createBlogHome(data) {
     <div class="my-aut pointer-events-none cursor-none py-1">
       <img
         class="h-14 w-14 rounded-full border-2 border-white"
-        src="../img/profile${data.profileno}.jpg"
+        src="./img/profile${data.profileno}.jpg"
         alt=""
       />
     </div>

@@ -25,7 +25,7 @@ body {
 
 @media (min-width: 768px) {
   #whole {
-    background-image: url("../../img/bgm3.png");
+    background-image: url("../img/bgm3.png");
     background-repeat: no-repeat;
     object-fit: contain;
     background-position: translateX(100px);
