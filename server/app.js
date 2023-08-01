@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://blogify2004.netlify.app/",
+    origin: "https://blogify2004.netlify.app",
     credentials: true,
   })
 );
