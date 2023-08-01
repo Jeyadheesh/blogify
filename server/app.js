@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.port || 9000;
+const port = 3306;
 const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
